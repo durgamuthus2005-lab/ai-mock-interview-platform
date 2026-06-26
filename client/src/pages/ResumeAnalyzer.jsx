@@ -26,7 +26,7 @@ const analyzeResume = async () => {
     formData.append("resume", file);
 
     const response = await fetch(
-      "http://localhost:5000/api/resume/analyze",
+      "http://https://ai-mock-interview-platform-emsv.onrender.com/api/resume/analyze",
       {
         method: "POST",
         body: formData,

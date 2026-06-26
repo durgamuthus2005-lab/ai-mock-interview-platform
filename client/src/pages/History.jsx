@@ -12,7 +12,7 @@ function History() {
   const fetchHistory = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/interview/history"
+        "http://https://ai-mock-interview-platform-emsv.onrender.com/api/interview/history"
       );
 
       const data = await response.json();

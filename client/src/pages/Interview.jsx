@@ -39,7 +39,7 @@ const {
   const generateQuestion = async () => {
   try {
     const response = await fetch(
-      "http://localhost:5000/api/interview/question",
+      "http://https://ai-mock-interview-platform-emsv.onrender.com/api/interview/question",
       {
         method: "POST",
         headers: {
@@ -87,7 +87,7 @@ const handleSubmit = async () => {
     setLoading(true);
 
     const response = await fetch(
-      "http://localhost:5000/api/interview/evaluate",
+      "http://https://ai-mock-interview-platform-emsv.onrender.com/api/interview/evaluate",
       {
         method: "POST",
         headers: {

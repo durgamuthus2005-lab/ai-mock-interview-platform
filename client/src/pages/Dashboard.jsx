@@ -17,7 +17,7 @@ function Dashboard() {
 });
 
 useEffect(() => {
-  fetch("http://localhost:5000/api/interview/stats")
+  fetch("http://https://ai-mock-interview-platform-emsv.onrender.com/api/interview/stats")
     .then((res) => res.json())
     .then((data) => setStats(data))
     .catch((err) => console.log(err));
