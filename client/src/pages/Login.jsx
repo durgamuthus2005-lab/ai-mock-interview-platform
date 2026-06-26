@@ -13,7 +13,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://https://ai-mock-interview-platform-emsv.onrender.com/api/auth/login",
+        "https://ai-mock-interview-platform-emsv.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {
