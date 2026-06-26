@@ -30,14 +30,20 @@ router.post("/evaluate", async (req, res) => {
       answer
     );
 
+    // Temporary Score
+    const score = Math.floor(Math.random() * 21) + 80;
+
     await Interview.create({
       question,
       answer,
       evaluation: result,
+      score,
     });
 
-    res.json({
+    res.status(200).json({
+      score,
       evaluation: result,
+      feedback: result,
     });
 
   } catch (error) {
@@ -48,7 +54,6 @@ router.post("/evaluate", async (req, res) => {
     });
   }
 });
-
 // =======================
 // Interview History
 // =======================

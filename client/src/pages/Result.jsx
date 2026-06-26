@@ -1,133 +1,105 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Result() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const navigate = useNavigate();
+  const score = location.state?.score || 0;
+  const evaluation =
+    location.state?.evaluation || "No evaluation available.";
+  const feedback =
+    location.state?.feedback || "No feedback available.";
 
-return (
+  return (
+    <div className="min-h-screen bg-[#050816] flex justify-center items-center p-10">
 
-<div className="min-h-screen bg-[#050816] flex justify-center items-center p-10">
+      <div className="bg-[#182235] rounded-3xl p-10 w-full max-w-5xl">
 
-<div className="bg-[#182235] rounded-3xl p-10 w-full max-w-5xl">
+        <h1 className="text-5xl font-bold text-green-400">
+          🎉 Interview Completed
+        </h1>
 
-<h1 className="text-5xl font-bold text-green-400">
+        <p className="text-gray-400 mt-3">
+          Here is your AI Interview Report
+        </p>
 
-🎉 Interview Completed
+        {/* Score Card */}
 
-</h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
 
-<p className="text-gray-400 mt-3">
+          <div className="bg-[#0B1120] p-6 rounded-xl text-center">
+            <h3 className="text-gray-400">Overall Score</h3>
 
-Here is your interview report.
+            <h1 className="text-5xl text-green-400 mt-3 font-bold">
+              {score}/100
+            </h1>
+          </div>
 
-</p>
+          <div className="bg-[#0B1120] p-6 rounded-xl text-center">
+            <h3 className="text-gray-400">Interview</h3>
 
-<div className="grid grid-cols-4 gap-6 mt-10">
+            <h1 className="text-3xl text-white mt-3">
+              Completed
+            </h1>
+          </div>
 
-<div className="bg-[#0B1120] p-6 rounded-xl">
+          <div className="bg-[#0B1120] p-6 rounded-xl text-center">
+            <h3 className="text-gray-400">Status</h3>
 
-<h3 className="text-gray-400">
-Overall Score
-</h3>
+            <h1 className="text-3xl text-green-400 mt-3">
+              Passed
+            </h1>
+          </div>
 
-<h1 className="text-4xl text-white mt-3">
-8.8
-</h1>
+        </div>
 
-</div>
+        {/* Evaluation */}
 
-<div className="bg-[#0B1120] p-6 rounded-xl">
+        <h2 className="text-3xl text-white mt-10">
+          AI Evaluation
+        </h2>
 
-<h3 className="text-gray-400">
-Questions
-</h3>
+        <div className="bg-[#0B1120] rounded-xl p-6 mt-4">
+          <p className="text-green-400 text-lg leading-8">
+            {evaluation}
+          </p>
+        </div>
 
-<h1 className="text-4xl text-white mt-3">
-10
-</h1>
+        {/* Feedback */}
 
-</div>
+        <h2 className="text-3xl text-white mt-10">
+          AI Feedback
+        </h2>
 
-<div className="bg-[#0B1120] p-6 rounded-xl">
+        <div className="bg-[#0B1120] rounded-xl p-6 mt-4">
+          <p className="text-white text-lg leading-8">
+            {feedback}
+          </p>
+        </div>
 
-<h3 className="text-gray-400">
-Time
-</h3>
+        {/* Buttons */}
 
-<h1 className="text-4xl text-white mt-3">
-18 min
-</h1>
+        <div className="flex gap-5 mt-10">
 
-</div>
+          <button
+            className="bg-purple-600 hover:bg-purple-700 px-8 py-4 rounded-xl text-white"
+          >
+            Download Report
+          </button>
 
-<div className="bg-[#0B1120] p-6 rounded-xl">
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl text-white"
+          >
+            Dashboard
+          </button>
 
-<h3 className="text-gray-400">
-Average
-</h3>
+        </div>
 
-<h1 className="text-4xl text-white mt-3">
-8.6
-</h1>
+      </div>
 
-</div>
-
-</div>
-
-<h2 className="text-3xl text-white mt-10">
-
-AI Suggestions
-
-</h2>
-
-<div className="bg-[#0B1120] rounded-xl p-6 mt-6">
-
-<ul className="text-green-400 space-y-3">
-
-<li>✔ Good communication skills</li>
-
-<li>✔ Improve technical explanation</li>
-
-<li>✔ Add more examples</li>
-
-<li>✔ Maintain confidence</li>
-
-</ul>
-
-</div>
-
-<div className="flex gap-5 mt-10">
-
-<button
-
-className="bg-purple-600 hover:bg-purple-700 px-8 py-4 rounded-xl text-white"
-
->
-
-Download Report
-
-</button>
-
-<button
-
-onClick={()=>navigate("/dashboard")}
-
-className="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl text-white"
-
->
-
-Dashboard
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-);
-
+    </div>
+  );
 }
 
 export default Result;

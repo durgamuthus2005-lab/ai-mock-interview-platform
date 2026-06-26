@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaVolumeUp } from "react-icons/fa";
 import {
   FaRobot,
@@ -13,6 +13,7 @@ import {
 function Interview() {
 
 const location = useLocation();
+const navigate = useNavigate();
 
 const {
   role,
@@ -104,22 +105,22 @@ const handleSubmit = async () => {
 
     setLoading(false);
 
-    // Show AI Feedback
     setEvaluation(data.evaluation);
 
-    // Save interview
     setAllEvaluations((prev) => [
       ...prev,
       {
         question,
         answer,
         evaluation: data.evaluation,
+        score: data.score,
+        feedback: data.feedback,
       },
     ]);
 
   } catch (error) {
     setLoading(false);
-    console.error(error);
+    console.log(error);
     alert("Evaluation Failed");
   }
 };
@@ -461,9 +462,18 @@ Evaluating Answer...
 
       } else {
 
-        setInterviewCompleted(true);
+    const lastEvaluation =
+      allEvaluations[allEvaluations.length - 1];
 
-      }
+    navigate("/result", {
+      state: {
+        score: last.score,
+        evaluation: last.evaluation,
+        feedback: last.feedback,
+      },
+    });
+
+}
 
     }}
     className="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl"
