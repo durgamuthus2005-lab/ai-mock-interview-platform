@@ -1,17 +1,7 @@
-function Home() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-5xl font-bold">
-          AI Mock Interview Platform
-        </h1>
+import { Navigate } from "react-router-dom";
 
-        <p className="mt-4 text-gray-400">
-          Practice interviews with AI
-        </p>
-      </div>
-    </div>
-  );
+function Home() {
+  return <Navigate to="/login" replace />;
 }
 
 export default Home;

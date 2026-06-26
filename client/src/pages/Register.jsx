@@ -19,7 +19,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        "http://https://ai-mock-interview-platform-emsv.onrender.com/api/auth/register",
+        "https://ai-mock-interview-platform-emsv.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {
